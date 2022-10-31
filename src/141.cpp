@@ -1,9 +1,6 @@
 //
 // Created by ogier on 2022/10/27.
 //
-//
-// Created by ogier on 2022/10/27.
-//
 #include <iostream>
 using namespace std;
 //Definition for singly-linked list.
