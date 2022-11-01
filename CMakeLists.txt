@@ -4,4 +4,4 @@ project(leetcode)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(leetcode
-        234.cpp)
+        src/234.cpp)
