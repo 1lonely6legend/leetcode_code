@@ -17,8 +17,16 @@ struct TreeNode {
 void travpre(TreeNode *root, vector<int> &ans) {
   if (!root)
     return;
+  ans.push_back(root->val);//因为是前序 写在前面
+
+  ////////////之前的写法,感觉不太好
+  /*
+  if (!root)
+    return;
   else
     ans.push_back(root->val);
+  */
+  /////////////////////
   travpre(root->left, ans);
   travpre(root->right, ans);
 }
