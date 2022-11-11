@@ -16,7 +16,7 @@ struct TreeNode {
 
 void construct_paths(TreeNode *root, string path, vector<string> &paths) {
   if (root != nullptr) {
-    path += std::to_string(root->val);
+    path += std::to_string(root->val);//to_string函数,将数字常量转化为字符串,利用string的+运算符
     if (root->left == nullptr && root->right == nullptr) {  // 当前节点是叶子节点
       paths.push_back(path);                              // 把路径加入到答案中
     } else {
