@@ -24,7 +24,8 @@ int findTilt_son(TreeNode *root) {
 }
 int findTilt(TreeNode *root) {
   //其实这个rootcha没啥用,最高的一层函数已经加到ans里了.
-  int root_cha = findTilt_son(root);//使用int类型的函数,便于递归时返回当前节点以及所有子节点的和
+  //int root_cha = findTilt_son(root);//使用int类型的函数,便于递归时返回当前节点以及所有子节点的和
+  findTilt_son(root);//不用像27行那么写,这样就行
   return ans;
 }
 
