@@ -51,8 +51,8 @@ int main() {
   root->left = new TreeNode(2);
   root->right = new TreeNode(7);
   root->left->left = new TreeNode(1);
-  root->left->left = new TreeNode(3);
-  root->right->right = new TreeNode(7);
+  root->left->right = new TreeNode(3);
+  root->right->left = new TreeNode(7);
   root->right->right = new TreeNode(7);
 
   vector<int> ans = findMode(root);
