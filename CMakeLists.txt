@@ -3,4 +3,4 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(leetcode)
+add_executable(leetcode BinTree/637.cpp)
