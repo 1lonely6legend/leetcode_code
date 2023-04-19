@@ -1,6 +1,6 @@
 //
 // Created by ogier on 2023/4/19.
-// 205. 同构字符串
+// 205. 同构字符串 是290的简化版
 // https://leetcode.cn/problems/isomorphic-strings/?envType=study-plan-v2&id=top-interview-150
 // tmd  没写出来
 #include <iostream>
