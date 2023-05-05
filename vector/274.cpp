@@ -6,18 +6,23 @@
 #include <algorithm>
 using std::vector;
 
-int hIndex(vector<int>& citations) {
+int hIndex(vector<int> &citations) {
   std::sort(citations.begin(), citations.end());
-  int h = 0, i = citations.size() - 1;
-  while (i >= 0 && citations[i] > h) {
-    h++;
-    i--;
+  if (*(citations.end() - 1) == 0) return 0;
+  int size = citations.size();
+  int num = size;
+  int i = 0;
+  while (i < size) {
+    if (citations[i] >= num) break;
+    --num;
+    ++i;
   }
-  return h;
+  if (citations.at(i) == num) return citations[i];
+  else return num;
 }
 
-int main(){
-  vector<int> nums = {3,0,6,1,5};
-  std::cout<< hIndex(nums);
+int main() {
+  vector<int> nums = {0,1,3,1};
+  std::cout << hIndex(nums);
   return 0;
 }
