@@ -4,4 +4,4 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(scorpio string/151.cpp)
+add_executable(scorpio string/6.cpp)
