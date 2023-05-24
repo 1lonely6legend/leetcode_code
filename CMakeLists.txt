@@ -4,4 +4,4 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(scorpio vector/49.cpp)
+add_executable(scorpio )
