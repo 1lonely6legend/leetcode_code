@@ -2,7 +2,7 @@
 // Created by ogier on 2023/5/29.
 // 150. 逆波兰表达式求值
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <vector>
 #include <stack>
 using std::string;
