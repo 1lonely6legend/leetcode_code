@@ -1,6 +1,6 @@
 //
 // Created by ogier on 2022/11/10.
-//
+//226. 翻转二叉树
 struct TreeNode {
   int val;
   TreeNode *left;
@@ -26,7 +26,31 @@ TreeNode *invertTree(TreeNode *root) {
 }
 */
 
+//bfs
+class Solution {
+ public:
+  TreeNode *invertTree(TreeNode *root) {
+    queue < TreeNode * > que;
+    if (root != nullptr) que.push(root);
+    while (!que.empty()) {
+      int size = que.size();
+      for (int i = 0; i < size; ++i) {
+        TreeNode *cur = que.front();
+        que.pop();
+        TreeNode *temp = cur->left;
+        cur->left = cur->right;
+        cur->right = temp;
+        if (cur->left) que.push(cur->left);
+        if (cur->right) que.push(cur->right);
+      }
+    }
+    return root;
+  }
+};
+
+
 //leetcode官解递归
+/*
 class Solution {
  public:
   TreeNode* invertTree(TreeNode* root) {
@@ -39,4 +63,4 @@ class Solution {
     root->right = left;
     return root;
   }
-};
+};*/
