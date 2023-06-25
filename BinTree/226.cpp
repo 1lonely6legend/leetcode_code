@@ -1,6 +1,8 @@
 //
 // Created by ogier on 2022/11/10.
 //226. 翻转二叉树
+#include <queue>
+using std::queue;
 struct TreeNode {
   int val;
   TreeNode *left;
@@ -30,7 +32,7 @@ TreeNode *invertTree(TreeNode *root) {
 class Solution {
  public:
   TreeNode *invertTree(TreeNode *root) {
-    queue < TreeNode * > que;
+    queue<TreeNode *> que;
     if (root != nullptr) que.push(root);
     while (!que.empty()) {
       int size = que.size();
