@@ -49,3 +49,32 @@ int main() {
 
   return 0;
 }
+
+//
+class Soultion {
+ public:
+  int result;
+  void getDepth(TreeNode *node, int depth) {
+    result = depth > result ? depth : result;
+    if (node->left == nullptr && node->right == nullptr)return;
+    if (node->left) {
+      depth++;
+      getDepth(node->left, depth);
+      depth--;
+    }
+    if (node->right) {
+      depth++;
+      getDepth(node->right, depth);
+      depth--;
+    }
+    return;
+  }
+  int maxDepth(TreeNode *root) {
+    result = 0;
+    if (root == nullptr) return result;
+    getDepth(root, 1);
+    return result;
+  }
+};
+
+
