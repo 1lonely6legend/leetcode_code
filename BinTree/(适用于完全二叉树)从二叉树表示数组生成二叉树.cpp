@@ -21,7 +21,7 @@ struct TreeNode {
 };
 
 TreeNode *construct_binary_tree(const vector<int> &vec) {
-  vector<TreeNode *> vecTree(vec.size(), nullptr);
+  vector<TreeNode *> vecTree(vec.size(), nullptr);//size个,使用每个元素初始化为空指针
   TreeNode *root = nullptr;
   for (int i = 0; i < vec.size(); ++i) {
     // 对原始int数组进行遍历,在node数组中生成对应的节点
@@ -41,4 +41,40 @@ TreeNode *construct_binary_tree(const vector<int> &vec) {
     }
   }
   return root;
+}
+// 层序打印打印二叉树
+void print_binary_tree(TreeNode* root) {
+  queue<TreeNode*> que;
+  if (root != NULL) que.push(root);
+  vector<vector<int>> result;
+  while (!que.empty()) {
+    int size = que.size();
+    vector<int> vec;
+    for (int i = 0; i < size; i++) {
+      TreeNode* node = que.front();
+      que.pop();
+      if (node != NULL) {
+        vec.push_back(node->val);
+        que.push(node->left);
+        que.push(node->right);
+      }
+      // 这里的处理逻辑是为了把null节点打印出来，用-1 表示null
+      else vec.push_back(-1);
+    }
+    result.push_back(vec);
+  }
+  for (int i = 0; i < result.size(); i++) {
+    for (int j = 0; j < result[i].size(); j++) {
+      cout << result[i][j] << " ";
+    }
+    cout << endl;
+  }
+}
+
+int main() {
+  // 注意本代码没有考虑输入异常数据的情况
+  // 用 -1 来表示null
+  vector<int> vec = {5,4,8,11,3,13,4,7,2,-1,-1,5,1,5,1};
+  TreeNode* root = construct_binary_tree(vec);
+  print_binary_tree(root);
 }
