@@ -4,4 +4,5 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(scorpio BinTree/513.cpp)
+add_executable(scorpio
+        BinTree/112_231011.cpp)
