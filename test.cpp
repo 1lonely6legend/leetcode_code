@@ -10,7 +10,9 @@ using namespace std;
 
 int main() {
   vector<int> test = {1, 2, 3, 4, 5, 6};
-  vector<int> test2(test.begin(), test.begin()+1);
+  vector<int> test2 = {1, 2, 3, 4, 5, 6};
+  test2.erase(test2.begin());
+//  vector<int> test2(test.begin(), test.begin() + 1);
   for (auto iter = test2.begin(); iter != test2.end(); iter++) {
     cout << *iter << " ";
   }
