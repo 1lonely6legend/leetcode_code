@@ -54,6 +54,7 @@ private:
     if (!cur->left && !cur->right) {
       if (count == 0)
         res.push_back(temp);
+      return;//可以直接退出这一层递归了,下面if不需要判断
     }
     if (cur->left) {
       temp.push_back(cur->left->val);
