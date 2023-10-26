@@ -14,41 +14,58 @@ using namespace std;
 
 class Solution {
  public:
+	//建立两个HashMap，
+	//ori用于存储目标字符串t中每个字符的出现次数
+	//cnt用于存储当前窗口中是t中的字符的出现次数。
 	unordered_map <char, int> ori, cnt;
 
+	//判断当前窗口是否包含了目标字符串t的所有字符。(种类和数量都要匹配)
 	bool check() {
 		for (const auto &p: ori) {
 			if (cnt[p.first] < p.second) {
+				//如果窗口内的每个字符和它的数量，只要有一个比目标字符串中的字符少，当前窗口肯定不符合了
 				return false;
 			}
 		}
+		//符合
 		return true;
 	}
 
 	string minWindow(string s, string t) {
+		//遍历目标字符串t，将每个字符及其出现次数存入ori中
 		for (const auto &c: t) {
 			++ori[c];
 		}
 
 		int l = 0, r = -1;
+		//l窗口左边界，r窗口右边界
+		//ansL和ansR用于存储最小覆盖子串的起始位置和结束位置。
 		int len = INT_MAX, ansL = -1, ansR = -1;
 
+		//开始遍历
 		while (r < int(s.size())) {
+			//遍历原字符串s，右指针r向右移动。若r未越界且当前字符存在于ori中，则将其添加至cnt中并增加其出现次数。
 			if (ori.find(s[++r]) != ori.end()) {
+				//存放窗口内不同目标字符的数量
 				++cnt[s[r]];
 			}
+			//判定这个窗口是否符合题目中的要求
 			while (check() && l <= r) {
+				//比较窗口大小,如果你后面符合的窗口都比我现在大，就没必要更新了，继续缩短窗口
 				if (r - l + 1 < len) {
-					len = r - l + 1;
-					ansL = l;
+					len = r - l + 1;//更新为窗口大小
+					ansL = l;//符合的左边边界下标就是窗口的左边界
 				}
+				//若左指针指向的字符存在于ori中，则在cnt中减少其出现次数。（因为现在要开始向后移动窗口的左边界）
+				//如果是普通字符就只是简单的移动指针就叫可以了，如果是目标字符，就要减少窗口这个字符的数量
 				if (ori.find(s[l]) != ori.end()) {
 					--cnt[s[l]];
 				}
+				//窗口左边界向后移动，缩小窗口
 				++l;
 			}
 		}
-
+		//返回最小覆盖子串，若ansL为-1，则说明不存在，返回空串。否则，返回s中从ansL到ansR的子串
 		return ansL == -1 ? string() : s.substr(ansL, len);
 	}
 };

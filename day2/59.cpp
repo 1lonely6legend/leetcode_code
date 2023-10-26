@@ -11,39 +11,43 @@
 
 using namespace std;
 
+
+//这种方法好写，但是要明白每一个的意思，udrl，大于小于号，一个都不能写错
 class Solution {
  public:
 	vector<vector<int>> generateMatrix(int n) {
-		vector<vector<int>> res(n, vector<int>(n));
-		int startx = 0;
-		int starty = 0;
-		int loop = n / 2;
-		int mid = n / 2;
 		int count = 1;
-		int offset = 1;
-		int i, j;
-		while (loop--) {
-			i = startx;
-			j = starty;
-			for (j = starty; j < n - offset; j++) {
-				res[startx][j] = count++;
+		int u = 0, l = 0, d = n - 1, r = n - 1;
+		vector<vector<int>> res(n, vector<int>(n));
+		while (true) {
+
+			for (int i = l; i <= r; ++i) {
+				res[u][i] = count++;
 			}
-			for (i = startx; i < n - offset; i++) {
-				res[i][j] = count++;
+			if (++u > d) break;
+
+			for (int i = u; i <= d; ++i) {
+				res[i][r] = count++;
 			}
-			for (; j > starty; j--) {
-				res[i][j] = count++;
+			if (--r < l) break;
+
+			for (int i = r; i >= l; i--) {
+				res[d][i] = count++;
 			}
-			for (; i > startx; i--) {
-				res[i][j] = count++;
+			if (--d < u) break;
+
+			for (int i = d; i >= u; i--) {
+				res[i][l] = count++;
 			}
-			offset++;
-			startx++;
-			starty++;
-		}
-		if (n % 2 == 1) {
-			res[mid][mid] = count;
+			if (++l > r) break;
+
 		}
 		return res;
 	}
 };
+
+int main() {
+	Solution S;
+	auto res = S.generateMatrix(3);
+	return 0;
+}
