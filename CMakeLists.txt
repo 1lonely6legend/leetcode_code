@@ -9,5 +9,5 @@ add_executable(leetcode
 )
 
 add_executable(test
-
+        test.cpp
 )
