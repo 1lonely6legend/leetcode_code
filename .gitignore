@@ -40,3 +40,5 @@ cpp刷题入门.pdf
 build/
 cmake_install.cmake
 CMakeCache.txt
+
+**/**.log
