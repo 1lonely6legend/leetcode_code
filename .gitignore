@@ -44,3 +44,4 @@ CMakeCache.txt
 scorpio
 Makefile
 build/
+**/*.log
