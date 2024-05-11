@@ -3,4 +3,5 @@ project(Hot100)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(leetcode 11.cpp)
+add_executable(leetcode
+        Newton.cpp)
