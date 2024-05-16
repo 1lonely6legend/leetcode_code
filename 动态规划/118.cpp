@@ -1,0 +1,19 @@
+//
+// Created by ogier on 24-5-15.
+//
+#include <vector>
+using namespace std;
+class Solution {
+public:
+  vector<vector<int>> generate(int numRows) {
+    vector<vector<int>> dp(numRows);
+    for (int i = 0; i < numRows; ++i) {
+      dp[i].resize(i + 1);
+      dp[i][0] = dp[i][i] = 1;
+      for (int j = 1; j < i; ++j) {
+        dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
+      }
+    }
+    return dp;
+  }
+};
