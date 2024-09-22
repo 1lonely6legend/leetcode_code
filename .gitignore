@@ -39,3 +39,4 @@ cpp刷题入门.pdf
 *.log
 build/
 .vscode/
+leetcode/
